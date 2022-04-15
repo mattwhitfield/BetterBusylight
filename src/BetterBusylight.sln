@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterBusylight", "BetterBusylight\BetterBusylight.csproj", "{166F3E3A-C369-4263-9FFF-0C680A14D38D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBusylight.Tests", "BetterBusylight.Tests\BetterBusylight.Tests.csproj", "{EFEABCF3-8857-4EA1-A5DC-762096C198F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{166F3E3A-C369-4263-9FFF-0C680A14D38D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166F3E3A-C369-4263-9FFF-0C680A14D38D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166F3E3A-C369-4263-9FFF-0C680A14D38D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166F3E3A-C369-4263-9FFF-0C680A14D38D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFEABCF3-8857-4EA1-A5DC-762096C198F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEABCF3-8857-4EA1-A5DC-762096C198F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEABCF3-8857-4EA1-A5DC-762096C198F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEABCF3-8857-4EA1-A5DC-762096C198F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74470F78-B8E8-4827-9915-A70318F2DB38}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+<config>
+  <audioDevice searchString="Jabra" />
+  <lightStyles>
+    <locked>
+	  <static color="#141414" />
+	</locked>
+    <idle>
+	  <fade from="#008000" to="#0000FF" duration="1.5" />
+	  <fade from="#0000FF" to="#008000" duration="1.5" />
+	</idle>
+    <audioOnly flashFrequency="0.75">
+	  <static color="#ff4000" />
+	</audioOnly>
+    <cameraOnly flashFrequency="0.75">
+	  <static color="#800080" />
+	</cameraOnly>
+    <audioAndCamera flashFrequency="1.5">
+	  <static color="#ff0000" />
+	</audioAndCamera>
+  </lightStyles>
+</config>
