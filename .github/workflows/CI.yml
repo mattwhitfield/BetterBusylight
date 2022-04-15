@@ -1,4 +1,4 @@
-name: NetDependencyWalker build
+name: BetterBusylight build
 
 on:
   pull_request:
