@@ -4,4 +4,4 @@ Better Busylight is busy light controller software that changes the light state 
 
 # Documentation 📖
 
-The best way to view the documentation is to visit visit the [documentation on GitHub pages](https://mattwhitfield.github.io/BetterBusylight/).
+The best way to view the documentation is to visit the [documentation on GitHub pages](https://mattwhitfield.github.io/BetterBusylight/).
