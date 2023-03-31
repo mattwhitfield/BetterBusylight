@@ -7,20 +7,29 @@
     [ExcludeFromCodeCoverage] // Registry checks for camera control - not testable
     public class WebcamHandler : IWebcamHandler
     {
+        private static readonly string[] RootKeys = new[]
+        {
+            @"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam",
+            @"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\NonPackaged",
+        };
+
         public bool IsWebCamInUse()
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\NonPackaged"))
+            foreach (var rootKey in RootKeys)
             {
-                foreach (var subKeyName in key.GetSubKeyNames())
+                using (var key = Registry.CurrentUser.OpenSubKey(rootKey))
                 {
-                    using (var subKey = key.OpenSubKey(subKeyName))
+                    foreach (var subKeyName in key.GetSubKeyNames())
                     {
-                        if (subKey.GetValueNames().Contains("LastUsedTimeStop"))
+                        using (var subKey = key.OpenSubKey(subKeyName))
                         {
-                            var endTime = subKey.GetValue("LastUsedTimeStop") is long ? (long)subKey.GetValue("LastUsedTimeStop") : -1;
-                            if (endTime <= 0)
+                            if (subKey.GetValueNames().Contains("LastUsedTimeStop"))
                             {
-                                return true;
+                                var endTime = subKey.GetValue("LastUsedTimeStop") is long ? (long)subKey.GetValue("LastUsedTimeStop") : -1;
+                                if (endTime <= 0)
+                                {
+                                    return true;
+                                }
                             }
                         }
                     }
