@@ -66,14 +66,18 @@
                 {
                     foreach (var endpoint in enumAudioEndpoints)
                     {
-                        if ((endpoint.DeviceState & DeviceState.Active) > 0)
+                        try
                         {
-                            activeDevices.Add(endpoint.FriendlyName);
+                            if ((endpoint.DeviceState & DeviceState.Active) > 0)
+                            {
+                                activeDevices.Add(endpoint.FriendlyName);
+                            }
+                            else
+                            {
+                                otherDevices.Add(endpoint.FriendlyName);
+                            }
                         }
-                        else
-                        {
-                            otherDevices.Add(endpoint.FriendlyName);
-                        }
+                        catch { }
                         endpoint.Dispose();
                     }
                 }
