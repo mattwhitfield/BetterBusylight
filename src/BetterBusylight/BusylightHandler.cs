@@ -24,31 +24,36 @@
                 throw new ArgumentNullException(nameof(sequence));
             }
 
-            var color = sequence.GetColor(currentElapsed);
-            var forcedRefreshIsDue = _forcedRefresh.IsDue(currentElapsed);
-            if (color == _lastColor && !forcedRefreshIsDue)
+            try
             {
-                return;
+                var color = sequence.GetColor(currentElapsed);
+                var forcedRefreshIsDue = _forcedRefresh.IsDue(currentElapsed);
+                if (color == _lastColor && !forcedRefreshIsDue)
+                {
+                    return;
+                }
+
+                _lastColor = color;
+
+                var r = (byte)(color.R * 64 / 256);
+                var g = (byte)(color.G * 64 / 256);
+                var b = (byte)(color.B * 64 / 256);
+
+                var array = new byte[65];
+                array[1] = 16;  // magic value
+                array[2] = 1;   // times to repeat
+                array[3] = r;
+                array[4] = g;
+                array[5] = b;
+
+                var total = 17 + r + g + b;
+                array[63] = (byte)(total / 256);
+                array[64] = (byte)(total % 256);
+
+                _management.Write(array);
             }
-
-            _lastColor = color;
-
-            var r = (byte)(color.R * 64 / 256);
-            var g = (byte)(color.G * 64 / 256);
-            var b = (byte)(color.B * 64 / 256);
-
-            var array = new byte[65];
-            array[1] = 16;  // magic value
-            array[2] = 1;   // times to repeat
-            array[3] = r;
-            array[4] = g;
-            array[5] = b;
-
-            var total = 17 + r + g + b;
-            array[63] = (byte)(total / 256);
-            array[64] = (byte)(total % 256);
-
-            _management.Write(array);
+            catch (TimeoutException)
+            { }
         }
 
         private void Dispose(bool disposing)
