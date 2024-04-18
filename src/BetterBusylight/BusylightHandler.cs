@@ -52,6 +52,8 @@
 
                 _management.Write(array);
             }
+            catch (InvalidOperationException)
+            { }
             catch (TimeoutException)
             { }
         }
